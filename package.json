@@ -82,6 +82,15 @@
     "vitest": "^2.0.5"
   },
   "overrides": {
+    "node-domexception": false,
+    "@supabase/supabase-js": {
+      "node-domexception": false
+    },
+    "@supabase/storage-js": {
+      "node-domexception": false
+    }
+  },
+  "resolutions": {
     "node-domexception": false
   }
 }
