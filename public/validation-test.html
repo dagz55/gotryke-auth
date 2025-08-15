@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Auth Validation Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .test { margin: 10px 0; padding: 10px; border: 1px solid #ccc; }
+        .success { background-color: #d4edda; }
+        .error { background-color: #f8d7da; }
+    </style>
+</head>
+<body>
+    <h1>Authentication Validation Test</h1>
+    <div id="results"></div>
+    
+    <script>
+        const results = document.getElementById('results');
+        
+        async function runTest(name, phone, pin, expectedSuccess) {
+            const testDiv = document.createElement('div');
+            testDiv.className = 'test';
+            testDiv.innerHTML = `<h3>${name}</h3><p>Testing...</p>`;
+            results.appendChild(testDiv);
+            
+            try {
+                const response = await fetch('/api/auth/signin', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ phone, pin })
+                });
+                
+                const result = await response.json();
+                
+                const actualSuccess = response.ok && result.success;
+                const testPassed = actualSuccess === expectedSuccess;
+                
+                testDiv.className = testPassed ? 'test success' : 'test error';
+                testDiv.innerHTML = `
+                    <h3>${name} - ${testPassed ? 'PASS' : 'FAIL'}</h3>
+                    <p>Expected success: ${expectedSuccess}</p>
+                    <p>Actual success: ${actualSuccess}</p>
+                    <p>Status: ${response.status}</p>
+                    <p>Message: ${result.error || 'Success'}</p>
+                `;
+                
+            } catch (error) {
+                testDiv.className = 'test error';
+                testDiv.innerHTML = `<h3>${name} - ERROR</h3><p>${error.message}</p>`;
+            }
+        }
+        
+        // Run tests when page loads
+        window.onload = async function() {
+            await runTest('Invalid PIN Test', '+1234567890', 'WRONG_PIN', false);
+            await runTest('Invalid Phone Test', '+9999999999', '1234', false);
+            await runTest('Valid Credentials Test (if user exists)', '+15551234567', '1234', true);
+        };
+    </script>
+</body>
+</html>

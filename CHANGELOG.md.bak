@@ -1,0 +1,65 @@
+# Changelog
+
+All notable changes to the GoTryke project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [Unreleased]
+
+### Added
+- Firebase Studio auto-run configuration
+- Live Map View functionality with Mapbox integration
+- Map Settings under System Settings with choice between Google Maps and Mapbox
+- Enhanced Project Plan & Progress UI/UX with detailed customization
+- Guide section with comprehensive application documentation
+- Directory structure documentation in Guide section
+- Analytics moved from Operations Command Center to Dashboard
+- User Growth and Recent Reports relocated from Admin to Operations Command Center
+
+### Changed
+- Updated Mapbox API key configuration
+- Reorganized dashboard layout and navigation structure
+- Improved Guide section organization with topic-specific views
+- Set project start year to 2025 and month to June
+
+### Fixed
+- Multiple Next.js error resolutions
+- Guide section navigation and topic display issues
+- Component rendering errors in various sections
+
+### Team
+- Dagz: Full Stack Developer
+- Ju: UI/UX Design, QA Testing
+
+## [1.0.0] - Initial Release
+
+### Added
+- Project setup with Next.js 15.3.3 and TypeScript
+- Integrated Tailwind CSS for styling
+- Implemented basic routing structure with App Router
+- Added comprehensive authentication system with PIN-based login
+- Firebase integration for backend services (Auth, Firestore, Storage)
+- Multi-role support: Admin, Dispatcher, Passenger, Rider, Guide
+- Shadcn UI component library integration
+- React Context for dirty state management
+- Basic utility functions
+- Mapbox integration for real-time tracking
+- Google Genkit AI integration with Gemini 2.0 Flash
+- Operations Command Center with analytics
+- Payment management system
+- Responsive sidebar navigation
+- Data tables with sorting, filtering, and pagination
+- Form validation throughout the application
+
+### Infrastructure
+- Development server configured on port 9002
+- Environment variable configuration for Firebase, Mapbox, and AI services
+- Production build configuration with TypeScript and ESLint bypass
+- Genkit development server for AI features
+
+### Security
+- PIN-based authentication using Firebase Auth
+- Role-based access control (RBAC)
+- Protected routes under (app) route group
+- Secure Firebase operations through centralized configuration

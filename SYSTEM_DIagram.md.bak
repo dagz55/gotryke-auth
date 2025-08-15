@@ -1,0 +1,511 @@
+# GoTryke System Architecture Diagrams
+
+## High-Level System Architecture
+
+```mermaid
+graph TB
+    subgraph "Users"
+        Admin[👤 Admin]
+        Dispatcher[🎯 Dispatcher]
+        Rider[🏍️ Rider]
+        Passenger[🚶 Passenger]
+        Guide[📍 Guide]
+    end
+
+    subgraph "Frontend Layer"
+        WebApp[🌐 Next.js Web App<br/>React 18 + TypeScript]
+        PWA[📱 Progressive Web App]
+    end
+
+    subgraph "API Gateway"
+        NextAPI[⚡ Next.js API Routes]
+        Middleware[🛡️ Middleware<br/>Auth + Rate Limiting]
+    end
+
+    subgraph "Core Services"
+        AuthSvc[🔐 Auth Service]
+        UserSvc[👥 User Service]
+        BookingSvc[📅 Booking Service]
+        TrackingSvc[📍 Tracking Service]
+        PaymentSvc[💳 Payment Service]
+        NotificationSvc[🔔 Notification Service]
+    end
+
+    subgraph "External Services"
+        Twilio[📨 Twilio SMS]
+        Mapbox[🗺️ Mapbox Maps]
+        Firebase[🔥 Firebase Suite]
+        Genkit[🤖 Google Genkit AI]
+    end
+
+    subgraph "Data Storage"
+        Firestore[(📊 Firestore DB)]
+        Storage[(💾 Firebase Storage)]
+        Cache[(⚡ Redis Cache)]
+    end
+
+    Admin --> WebApp
+    Dispatcher --> WebApp
+    Rider --> PWA
+    Passenger --> PWA
+    Guide --> WebApp
+
+    WebApp --> NextAPI
+    PWA --> NextAPI
+    
+    NextAPI --> Middleware
+    Middleware --> AuthSvc
+    Middleware --> UserSvc
+    Middleware --> BookingSvc
+    Middleware --> TrackingSvc
+    Middleware --> PaymentSvc
+    Middleware --> NotificationSvc
+
+    AuthSvc --> Twilio
+    AuthSvc --> Firebase
+    TrackingSvc --> Mapbox
+    BookingSvc --> Genkit
+    NotificationSvc --> Twilio
+
+    AuthSvc --> Firestore
+    UserSvc --> Firestore
+    BookingSvc --> Firestore
+    TrackingSvc --> Firestore
+    PaymentSvc --> Firestore
+
+    UserSvc --> Storage
+    TrackingSvc --> Cache
+```
+
+## Authentication Flow Diagram
+
+```mermaid
+sequenceDiagram
+    participant U as User
+    participant F as Frontend
+    participant A as API
+    participant T as Twilio
+    participant FB as Firebase
+    participant DB as Firestore
+
+    Note over U,DB: Registration Flow
+    U->>F: Enter Phone + Name + Role
+    F->>A: POST /api/auth/send-otp
+    A->>A: Validate Input
+    A->>DB: Check if user exists
+    DB-->>A: User not found
+    A->>T: Send OTP via SMS
+    T->>U: 📱 SMS: "Your code: 123456"
+    A->>DB: Store OTP (10 min expiry)
+    A-->>F: Success: OTP Sent
+    
+    U->>F: Enter OTP
+    F->>A: POST /api/auth/verify-otp
+    A->>DB: Validate OTP
+    A->>FB: Create Auth User
+    A->>DB: Create User Profile
+    A->>A: Generate JWT Token
+    A-->>F: Success + JWT Token
+    F->>F: Store Token & Redirect
+
+    Note over U,DB: Sign In Flow
+    U->>F: Enter Phone + PIN
+    F->>A: POST /api/auth/signin
+    A->>DB: Find User by Phone
+    A->>A: Verify PIN (PBKDF2)
+    A->>A: Create Session
+    A-->>F: Success + Session Token
+    F->>F: Redirect to Dashboard
+```
+
+## Real-Time Tracking Architecture
+
+```mermaid
+graph LR
+    subgraph "Rider Device"
+        GPS[📍 GPS Module]
+        RiderApp[📱 Rider App]
+    end
+
+    subgraph "Tracking Pipeline"
+        API[🔌 Tracking API]
+        Queue[📦 Event Queue]
+        Processor[⚙️ Location Processor]
+    end
+
+    subgraph "Real-Time Distribution"
+        WebSocket[🔄 WebSocket Server]
+        PubSub[📡 Pub/Sub]
+    end
+
+    subgraph "Consumers"
+        Dispatcher[🖥️ Dispatcher View]
+        Passenger[📱 Passenger App]
+        Analytics[📊 Analytics Engine]
+    end
+
+    subgraph "Storage"
+        FirestoreRT[(🔥 Firestore<br/>Real-time)]
+        History[(📜 Location History)]
+    end
+
+    GPS --> RiderApp
+    RiderApp -->|Every 10s| API
+    API --> Queue
+    Queue --> Processor
+    Processor --> FirestoreRT
+    Processor --> History
+    Processor --> PubSub
+    PubSub --> WebSocket
+    WebSocket --> Dispatcher
+    WebSocket --> Passenger
+    FirestoreRT --> Analytics
+```
+
+## Database Schema Structure
+
+```mermaid
+erDiagram
+    USERS ||--o{ BOOKINGS : makes
+    USERS ||--o{ SESSIONS : has
+    USERS ||--o{ VEHICLES : owns
+    USERS {
+        string uid PK
+        string phone UK
+        string name
+        string email
+        string role
+        string pin_hash
+        boolean isVerified
+        timestamp createdAt
+        timestamp lastLogin
+    }
+
+    BOOKINGS ||--|| TRIPS : creates
+    BOOKINGS {
+        string id PK
+        string passengerId FK
+        string riderId FK
+        string status
+        object pickupLocation
+        object dropoffLocation
+        number fare
+        timestamp bookingTime
+        timestamp completedAt
+    }
+
+    TRIPS ||--o{ LOCATIONS : tracks
+    TRIPS {
+        string id PK
+        string bookingId FK
+        string riderId FK
+        timestamp startTime
+        timestamp endTime
+        number distance
+        string status
+    }
+
+    LOCATIONS {
+        string id PK
+        string tripId FK
+        number latitude
+        number longitude
+        number speed
+        timestamp timestamp
+    }
+
+    VEHICLES {
+        string id PK
+        string ownerId FK
+        string plateNumber UK
+        string model
+        string color
+        boolean isActive
+        timestamp lastMaintenance
+    }
+
+    SESSIONS {
+        string id PK
+        string userId FK
+        string token
+        string userAgent
+        string ipAddress
+        timestamp createdAt
+        timestamp expiresAt
+    }
+
+    OTPS {
+        string phone PK
+        string otp
+        string name
+        string role
+        timestamp createdAt
+        timestamp expiresAt
+    }
+
+    SECURITY_LOGS {
+        string id PK
+        string eventType
+        string userId
+        string phone
+        string userAgent
+        string ipAddress
+        string riskLevel
+        object metadata
+        timestamp timestamp
+    }
+```
+
+## Component Architecture
+
+```mermaid
+graph TD
+    subgraph "Next.js Application Structure"
+        App[app/]
+        
+        subgraph "Public Routes"
+            Landing[page.tsx - Landing]
+            SignUp[signup/page.tsx]
+            ForgotPin[forgot-pin/page.tsx]
+        end
+        
+        subgraph "Protected Routes - app/"
+            Layout[layout.tsx - Auth Check]
+            Admin[admin/ - Admin Dashboard]
+            Dispatcher[dispatcher/ - Dispatch Center]
+            Rider[rider/ - Rider Interface]
+            Passenger[passenger/ - Booking]
+            Guide[guide/ - Navigation]
+        end
+        
+        subgraph "API Routes - api/"
+            AuthAPI[auth/ - Authentication]
+            UserAPI[users/ - User Management]
+            BookingAPI[bookings/ - Bookings]
+            TrackingAPI[tracking/ - Location]
+        end
+    end
+
+    subgraph "Shared Components"
+        UI[components/ui/ - Shadcn]
+        Auth[components/auth/ - Auth Forms]
+        Maps[components/maps/ - Mapbox]
+        Charts[components/charts/ - Recharts]
+    end
+
+    subgraph "Core Libraries"
+        Firebase[lib/firebase.ts]
+        AuthHelpers[lib/auth-helpers.ts]
+        Security[lib/security-utils.ts]
+        RateLimit[lib/rate-limiter.ts]
+    end
+
+    App --> Landing
+    App --> SignUp
+    App --> ForgotPin
+    App --> Layout
+    Layout --> Admin
+    Layout --> Dispatcher
+    Layout --> Rider
+    Layout --> Passenger
+    Layout --> Guide
+    
+    Landing --> Auth
+    SignUp --> Auth
+    Admin --> UI
+    Admin --> Charts
+    Dispatcher --> Maps
+    Rider --> Maps
+    
+    AuthAPI --> Firebase
+    AuthAPI --> AuthHelpers
+    AuthAPI --> Security
+    AuthAPI --> RateLimit
+```
+
+## Deployment Pipeline
+
+```mermaid
+graph LR
+    subgraph "Development"
+        LocalDev[💻 Local Development<br/>npm run dev]
+        Testing[🧪 Testing<br/>Jest + Cypress]
+    end
+
+    subgraph "CI/CD Pipeline"
+        GitHub[📦 GitHub]
+        Actions[⚙️ GitHub Actions]
+        Build[🔨 Build & Lint]
+        Deploy[🚀 Deploy]
+    end
+
+    subgraph "Environments"
+        Dev[🔧 Development<br/>dev.gotryke.app]
+        Staging[📋 Staging<br/>staging.gotryke.app]
+        Prod[🌍 Production<br/>gotryke.app]
+    end
+
+    subgraph "Infrastructure"
+        Vercel[▲ Vercel<br/>Edge Functions]
+        Firebase[🔥 Firebase<br/>Auth + DB]
+        CDN[🌐 CDN<br/>Global Edge]
+    end
+
+    LocalDev --> Testing
+    Testing --> GitHub
+    GitHub --> Actions
+    Actions --> Build
+    Build --> Deploy
+    Deploy --> Dev
+    Dev --> Staging
+    Staging --> Prod
+    Prod --> Vercel
+    Vercel --> Firebase
+    Vercel --> CDN
+```
+
+## Security Architecture
+
+```mermaid
+graph TB
+    subgraph "Security Layers"
+        WAF[🛡️ Web Application Firewall]
+        SSL[🔒 SSL/TLS Encryption]
+        
+        subgraph "Application Security"
+            InputVal[✅ Input Validation<br/>Zod Schemas]
+            RateLimit[⏱️ Rate Limiting<br/>5 attempts/15min]
+            CSRF[🔐 CSRF Protection<br/>SameSite Cookies]
+            XSS[🚫 XSS Protection<br/>CSP Headers]
+        end
+        
+        subgraph "Authentication Security"
+            PinHash[🔑 PIN Hashing<br/>PBKDF2 + Salt]
+            JWT[🎫 JWT Tokens<br/>24hr Expiry]
+            Session[📝 Session Management<br/>HTTP-Only Cookies]
+            OTP[📱 OTP Verification<br/>10min Expiry]
+        end
+        
+        subgraph "Data Security"
+            Encryption[🔐 At-Rest Encryption]
+            Transit[🔒 In-Transit Encryption]
+            Backup[💾 Automated Backups]
+            RBAC[👥 Role-Based Access]
+        end
+        
+        subgraph "Monitoring"
+            Logging[📊 Security Logging]
+            Alerts[🚨 Alert System]
+            Audit[📋 Audit Trail]
+        end
+    end
+
+    WAF --> SSL
+    SSL --> InputVal
+    InputVal --> RateLimit
+    RateLimit --> CSRF
+    CSRF --> XSS
+    XSS --> PinHash
+    PinHash --> JWT
+    JWT --> Session
+    Session --> OTP
+    OTP --> Encryption
+    Encryption --> Transit
+    Transit --> Backup
+    Backup --> RBAC
+    RBAC --> Logging
+    Logging --> Alerts
+    Alerts --> Audit
+```
+
+## Module Dependencies
+
+```mermaid
+graph TD
+    subgraph "NPM Packages"
+        Core[next@15.3.3<br/>react@18<br/>typescript@5]
+        UI[tailwindcss@3.4<br/>shadcn-ui<br/>framer-motion@11]
+        Firebase[firebase@11.1<br/>firebase-admin@13]
+        Auth[bcryptjs@2.4<br/>jsonwebtoken@9]
+        SMS[twilio@5.3<br/>semaphore-sms]
+        Maps[mapbox-gl@3.9<br/>react-map-gl@7.1]
+        Forms[react-hook-form@7.54<br/>zod@3.24]
+        Charts[recharts@2.15]
+        AI[genkit-ai<br/>gemini-api]
+        Utils[date-fns@4.1<br/>clsx@2.1]
+    end
+
+    Core --> UI
+    Core --> Firebase
+    Core --> Auth
+    Core --> SMS
+    Core --> Maps
+    Core --> Forms
+    Core --> Charts
+    Core --> AI
+    Core --> Utils
+
+    subgraph "Internal Modules"
+        AuthModule[Authentication Module]
+        UserModule[User Management]
+        BookingModule[Booking System]
+        TrackingModule[Real-time Tracking]
+        PaymentModule[Payment Processing]
+        NotificationModule[Notifications]
+    end
+
+    Firebase --> AuthModule
+    Auth --> AuthModule
+    SMS --> AuthModule
+    Firebase --> UserModule
+    Forms --> UserModule
+    Firebase --> BookingModule
+    AI --> BookingModule
+    Maps --> TrackingModule
+    Firebase --> TrackingModule
+    Firebase --> PaymentModule
+    SMS --> NotificationModule
+```
+
+---
+
+## Quick Reference Card
+
+### API Endpoints
+- `POST /api/auth/signin` - User login
+- `POST /api/auth/send-otp` - Send OTP for registration
+- `POST /api/auth/verify-otp` - Verify OTP and create account
+- `POST /api/auth/reset-pin` - Reset user PIN
+- `GET /api/auth/session` - Check current session
+- `POST /api/auth/signout` - Logout user
+
+### Environment Variables Required
+```bash
+# Firebase
+NEXT_PUBLIC_FIREBASE_API_KEY
+NEXT_PUBLIC_FIREBASE_PROJECT_ID
+
+# SMS
+TWILIO_ACCOUNT_SID
+TWILIO_AUTH_TOKEN
+TWILIO_VERIFY_SERVICE_SID
+
+# Maps
+NEXT_PUBLIC_MAPBOX_TOKEN
+
+# Security
+JWT_SECRET_KEY
+```
+
+### Development Commands
+```bash
+npm run dev          # Start development server
+npm run build        # Build for production
+npm run lint         # Run ESLint
+npm run typecheck    # Check TypeScript
+```
+
+---
+
+*Generated diagrams for GoTryke Architecture*  
+*Version 1.0 - January 2025*

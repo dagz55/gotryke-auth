@@ -1,0 +1,339 @@
+# GoTryke Authentication System Documentation
+
+## Overview
+GoTryke uses a secure, production-ready authentication system built on Firebase Auth with server-side validation, PIN-based authentication, and SMS OTP verification.
+
+## Architecture
+
+### Tech Stack
+- **Firebase Admin SDK**: Server-side authentication and user management
+- **JWT Sessions**: Secure httpOnly cookies for session management
+- **PIN Hashing**: PBKDF2 with per-user salt for secure PIN storage
+- **SMS OTP**: Phone number verification via Twilio/Semaphore
+- **Next.js Middleware**: Route protection and session validation
+
+### Security Features
+- ✅ Server-side OTP generation and validation
+- ✅ Secure PIN hashing (PBKDF2 + salt)
+- ✅ httpOnly JWT cookies (XSS protection)
+- ✅ CSRF protection via SameSite cookies
+- ✅ Rate limiting on auth endpoints
+- ✅ Session expiration (7 days)
+- ✅ Secure Firebase Admin SDK integration
+
+## Setup Guide
+
+### 1. Environment Variables
+
+Create a `.env` file based on `.env.example`:
+
+```bash
+# Firebase Admin SDK (Get from Firebase Console > Project Settings > Service Accounts)
+FIREBASE_PROJECT_ID="gotryke"
+FIREBASE_CLIENT_EMAIL="firebase-adminsdk-xxxxx@gotryke.iam.gserviceaccount.com"
+FIREBASE_PRIVATE_KEY="-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----\n"
+
+# JWT Secret (Generate secure random string)
+JWT_SECRET_KEY="<generate-using-openssl-rand-base64-32>"
+
+# SMS Provider (Choose one)
+# Option A: Twilio
+TWILIO_ACCOUNT_SID="ACxxxxxxxxxx"
+TWILIO_AUTH_TOKEN="xxxxxxxxxx"
+TWILIO_PHONE_NUMBER="+1234567890"
+
+# Option B: Semaphore (Philippines)
+SEMAPHORE_API_KEY="xxxxxxxxxx"
+SEMAPHORE_SENDER_NAME="GOTRYKE"
+```
+
+### 2. Install Dependencies
+
+```bash
+npm install jose zod firebase-admin
+```
+
+### 3. Firebase Setup
+
+1. Go to Firebase Console > Authentication
+2. Enable Phone authentication provider
+3. Add authorized domains (localhost:9002, your-domain.com)
+4. Download service account key > Save as reference for env vars
+
+## Authentication Flows
+
+### Sign Up Flow
+```mermaid
+sequenceDiagram
+    User->>Frontend: Enter name, phone, role
+    Frontend->>API: POST /api/auth/send-otp
+    API->>Firebase: Check if user exists
+    API->>SMS Provider: Send OTP code
+    API->>Frontend: OTP sent confirmation
+    User->>Frontend: Enter OTP code
+    Frontend->>API: POST /api/auth/verify-otp
+    API->>Database: Validate OTP
+    API->>Firebase: Create user account
+    API->>Database: Store user with hashed PIN
+    API->>Frontend: JWT session + custom token
+    Frontend->>Dashboard: Redirect to dashboard
+```
+
+### Sign In Flow
+```mermaid
+sequenceDiagram
+    User->>Frontend: Enter phone + PIN
+    Frontend->>API: POST /api/auth/signin
+    API->>Database: Lookup user by phone
+    API->>API: Verify PIN hash
+    API->>Frontend: JWT session cookie
+    Frontend->>Dashboard: Redirect to dashboard
+```
+
+## API Endpoints
+
+### POST /api/auth/send-otp
+Send OTP to phone number for verification.
+
+**Request:**
+```json
+{
+  "phone": "9123456789",
+  "name": "Juan Dela Cruz",
+  "role": "passenger"
+}
+```
+
+**Response:**
+```json
+{
+  "success": true,
+  "message": "OTP sent successfully"
+}
+```
+
+### POST /api/auth/verify-otp
+Verify OTP and create user account.
+
+**Request:**
+```json
+{
+  "phone": "9123456789",
+  "otp": "123456"
+}
+```
+
+**Response:**
+```json
+{
+  "success": true,
+  "message": "Account created successfully",
+  "customToken": "...",
+  "user": {
+    "uid": "...",
+    "name": "Juan Dela Cruz",
+    "phone": "9123456789",
+    "role": "passenger"
+  }
+}
+```
+
+### POST /api/auth/signin
+Sign in with phone and PIN.
+
+**Request:**
+```json
+{
+  "phone": "9123456789",
+  "pin": "1234"
+}
+```
+
+**Response:**
+```json
+{
+  "success": true,
+  "message": "Signed in successfully",
+  "user": {
+    "uid": "...",
+    "name": "Juan Dela Cruz",
+    "phone": "9123456789",
+    "role": "passenger"
+  }
+}
+```
+
+### POST /api/auth/signout
+Sign out and clear session.
+
+**Response:**
+```json
+{
+  "success": true,
+  "message": "Signed out successfully"
+}
+```
+
+### GET /api/auth/session
+Get current user session.
+
+**Response:**
+```json
+{
+  "user": {
+    "uid": "...",
+    "phone": "9123456789",
+    "email": "+639123456789@gotryke.com",
+    "role": "passenger",
+    "name": "Juan Dela Cruz",
+    "isVerified": true
+  }
+}
+```
+
+## React Hooks Usage
+
+### useAuth Hook
+```tsx
+import { useAuth } from '@/contexts/auth-context';
+
+function MyComponent() {
+  const { user, loading, signIn, signOut } = useAuth();
+  
+  if (loading) return <div>Loading...</div>;
+  if (!user) return <div>Not authenticated</div>;
+  
+  return (
+    <div>
+      Welcome, {user.name}!
+      <button onClick={signOut}>Sign Out</button>
+    </div>
+  );
+}
+```
+
+### useUser Hook
+```tsx
+import { useUser } from '@/contexts/auth-context';
+
+function ProfileComponent() {
+  const { user, loading } = useUser();
+  
+  if (loading) return <Skeleton />;
+  if (!user) return <SignInPrompt />;
+  
+  return <UserProfile user={user} />;
+}
+```
+
+## Troubleshooting
+
+### Common Issues
+
+#### 1. OTP Not Received
+- **Check:** SMS provider credentials in `.env`
+- **Check:** Phone number format (+63XXXXXXXXXX)
+- **Check:** Twilio/Semaphore account balance
+- **Solution:** Check server logs for SMS API errors
+
+#### 2. "Invalid PIN" Error
+- **Check:** User might be using old PIN format
+- **Solution:** System auto-migrates legacy PINs on first login
+- **Default PIN:** Last 4 digits of phone number
+
+#### 3. Session Expired
+- **Check:** JWT_SECRET_KEY hasn't changed
+- **Check:** Cookie settings in production
+- **Solution:** User needs to sign in again
+
+#### 4. Firebase Admin SDK Errors
+- **Check:** Service account credentials in `.env`
+- **Check:** Firebase project ID matches
+- **Check:** Private key format (newlines preserved)
+- **Solution:** Re-download service account JSON
+
+#### 5. Middleware Not Protecting Routes
+- **Check:** Middleware matcher configuration
+- **Check:** Session cookie being set
+- **Solution:** Verify JWT_SECRET_KEY is consistent
+
+### Debug Commands
+
+```bash
+# Check Firebase Admin connection
+npm run test:firebase-admin
+
+# Verify environment variables
+npm run check:env
+
+# Test SMS sending
+npm run test:sms -- +639123456789
+
+# Clear all sessions (development)
+npm run clear:sessions
+```
+
+## Migration Guide
+
+### From Old Auth System
+
+1. **Database Migration**
+   - Run PIN hashing migration: `npm run migrate:hash-pins`
+   - Updates all plaintext PINs to hashed format
+
+2. **User Migration**
+   - Existing users can sign in with phone + PIN
+   - System auto-migrates on first login
+   - No user action required
+
+3. **Code Updates**
+   - Replace direct Firebase Auth calls with `useAuth()` hook
+   - Update sign-in/sign-up forms to use new endpoints
+   - Remove client-side Firebase Auth imports
+
+## Security Best Practices
+
+1. **Environment Variables**
+   - Never commit `.env` file
+   - Use different keys for dev/staging/prod
+   - Rotate JWT_SECRET_KEY periodically
+
+2. **PIN Management**
+   - Enforce 4-digit PIN minimum
+   - Consider adding PIN change feature
+   - Log failed PIN attempts
+
+3. **Session Management**
+   - Set appropriate session expiration
+   - Clear sessions on password/PIN change
+   - Implement "remember me" carefully
+
+4. **Rate Limiting**
+   - Limit OTP requests per phone
+   - Limit sign-in attempts
+   - Use Redis for distributed rate limiting
+
+## Deployment Checklist
+
+- [ ] Set all required environment variables
+- [ ] Enable Firebase Phone Authentication
+- [ ] Configure SMS provider (Twilio/Semaphore)
+- [ ] Set production domain in Firebase Console
+- [ ] Enable HTTPS for secure cookies
+- [ ] Configure CORS if using separate frontend
+- [ ] Set NODE_ENV=production
+- [ ] Test auth flows in production
+- [ ] Monitor error logs
+- [ ] Set up alerts for auth failures
+
+## Support
+
+For issues or questions:
+1. Check troubleshooting section above
+2. Review server logs: `npm run logs:auth`
+3. Contact: support@gotryke.com
+
+---
+
+*Last Updated: 2025*
+*Version: 1.0.0*

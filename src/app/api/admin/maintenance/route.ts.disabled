@@ -1,0 +1,155 @@
+import { NextRequest, NextResponse } from 'next/server';
+import { getSession } from '@/lib/auth-helpers';
+import { maintenanceTasks } from '@/lib/maintenance-tasks';
+import { securityLogger } from '@/lib/security-logger';
+import { SECURITY_HEADERS } from '@/lib/security-utils';
+
+export async function POST(request: NextRequest) {
+  try {
+    // Verify admin session
+    const session = await getSession();
+    
+    if (!session) {
+      return NextResponse.json(
+        { error: 'Authentication required' },
+        { status: 401 }
+      );
+    }
+    
+    if (session.role !== 'admin') {
+      await securityLogger.logUnauthorizedAccess(
+        '/api/admin/maintenance',
+        session.uid,
+        request.headers.get('user-agent') || ''
+      );
+      return NextResponse.json(
+        { error: 'Admin access required' },
+        { status: 403 }
+      );
+    }
+
+    const body = await request.json();
+    const { action } = body;
+
+    let result: any = { success: false };
+
+    switch (action) {
+      case 'daily':
+        result = await maintenanceTasks.runDailyMaintenance();
+        break;
+        
+      case 'cleanup-sessions':
+        const maxAgeDays = body.maxAgeDays || 7;
+        const sessionCount = await maintenanceTasks.cleanupExpiredSessions(maxAgeDays);
+        result = { success: true, cleanedSessions: sessionCount };
+        break;
+        
+      case 'cleanup-otps':
+        const otpCount = await maintenanceTasks.cleanupExpiredOtps();
+        result = { success: true, cleanedOtps: otpCount };
+        break;
+        
+      case 'health-report':
+        const healthReport = await maintenanceTasks.generateHealthReport();
+        result = { success: true, report: healthReport };
+        break;
+        
+      case 'emergency-lockdown':
+        const reason = body.reason || 'Emergency security measure';
+        const lockdownResult = await maintenanceTasks.emergencyLockdown(reason);
+        result = lockdownResult;
+        break;
+        
+      default:
+        return NextResponse.json(
+          { error: 'Invalid action. Supported: daily, cleanup-sessions, cleanup-otps, health-report, emergency-lockdown' },
+          { status: 400 }
+        );
+    }
+
+    // Log the maintenance action
+    await securityLogger.logEvent({
+      eventType: 'suspicious_activity' as any, // Using closest available type
+      userId: session.uid,
+      message: `Admin maintenance action: ${action}`,
+      metadata: { action, result: result.success },
+    });
+
+    const response = NextResponse.json(result);
+    
+    // Add security headers
+    Object.entries(SECURITY_HEADERS).forEach(([key, value]) => {
+      response.headers.set(key, value);
+    });
+    
+    return response;
+
+  } catch (error) {
+    console.error('Maintenance API error:', error);
+    return NextResponse.json(
+      { error: 'Internal server error' },
+      { status: 500 }
+    );
+  }
+}
+
+export async function GET(request: NextRequest) {
+  try {
+    // Verify admin session
+    const session = await getSession();
+    
+    if (!session || session.role !== 'admin') {
+      return NextResponse.json(
+        { error: 'Admin access required' },
+        { status: 403 }
+      );
+    }
+
+    // Return available maintenance actions
+    const actions = {
+      available_actions: [
+        {
+          action: 'daily',
+          description: 'Run all daily maintenance tasks',
+          parameters: {}
+        },
+        {
+          action: 'cleanup-sessions',
+          description: 'Clean up expired user sessions',
+          parameters: { maxAgeDays: 'number (default: 7)' }
+        },
+        {
+          action: 'cleanup-otps',
+          description: 'Clean up expired OTP records',
+          parameters: {}
+        },
+        {
+          action: 'health-report',
+          description: 'Generate system health report',
+          parameters: {}
+        },
+        {
+          action: 'emergency-lockdown',
+          description: 'Emergency security lockdown - revokes all sessions',
+          parameters: { reason: 'string (required)' }
+        }
+      ]
+    };
+
+    const response = NextResponse.json(actions);
+    
+    // Add security headers
+    Object.entries(SECURITY_HEADERS).forEach(([key, value]) => {
+      response.headers.set(key, value);
+    });
+    
+    return response;
+
+  } catch (error) {
+    console.error('Maintenance API error:', error);
+    return NextResponse.json(
+      { error: 'Internal server error' },
+      { status: 500 }
+    );
+  }
+}

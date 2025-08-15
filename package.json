@@ -1,0 +1,31 @@
+{
+  "name": "gotryke-auth",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev:supabase": "supabase start",
+    "stop:supabase": "supabase stop",
+    "db:reset": "supabase db reset --linked --debug",
+    "functions:serve": "supabase functions serve --no-verify-jwt --env-file .env | cat",
+    "deploy:functions": "supabase functions deploy auth-on-signup admin-set-role sms-hook rides wallet",
+    "seed:admin": "tsx supabase/seed/seed-admin.ts",
+    "test": "vitest run --passWithNoTests",
+    "test:watch": "vitest"
+  },
+  "devDependencies": {
+    "@types/node": "^22.5.4",
+    "tsx": "^4.19.1",
+    "typescript": "^5.5.4",
+    "vitest": "^2.0.5"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.4",
+    "dotenv": "^16.4.5",
+    "zod": "^3.23.8"
+  },
+  "overrides": {
+    "node-domexception": false
+  }
+}
+

@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run dev:*)",
+      "Bash(npm run typecheck:*)",
+      "Bash(curl:*)",
+      "Bash(supabase status:*)",
+      "Bash(supabase start:*)",
+      "WebFetch(domain:supabase.com)",
+      "Bash(npm run lint:*)",
+      "Bash(npm run lint)",
+      "Bash(lsof:*)",
+      "Bash(npm run build:*)",
+      "Bash(git add:*)",
+      "Bash(cat:*)",
+      "Bash(grep:*)",
+      "Bash(find:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

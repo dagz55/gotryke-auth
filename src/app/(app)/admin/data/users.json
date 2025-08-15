@@ -1,0 +1,185 @@
+
+[
+  {
+    "id": "USR-0001",
+    "name": "Olivia Martin",
+    "phone": "9171234567",
+    "email": "olivia.martin@email.com",
+    "provider": "globe",
+    "role": "passenger",
+    "status": "online",
+    "city": "Manila",
+    "walletBalance": 1250.75,
+    "isVerified": true
+  },
+  {
+    "id": "USR-0002",
+    "name": "Jackson Lee",
+    "phone": "9287654321",
+    "email": "jackson.lee@email.com",
+    "provider": "smart",
+    "role": "rider",
+    "status": "active",
+    "toda": "Makati TODA",
+    "bodyNumber": "MK-123",
+    "city": "Makati",
+    "driversLicense": {
+      "number": "N02-12-123456",
+      "expiryDate": "2025-10-21"
+    },
+    "tricycleRegistration": {
+      "plateNumber": "AB 12345",
+      "expiryDate": "2024-08-15"
+    },
+    "isVerified": true
+  },
+  {
+    "id": "USR-0003",
+    "name": "Isabella Nguyen",
+    "phone": "9459876543",
+    "provider": "tnt",
+    "role": "dispatcher",
+    "status": "pending",
+    "city": "Quezon City",
+    "isVerified": false
+  },
+  {
+    "id": "USR-0004",
+    "name": "William Kim",
+    "phone": "9161112233",
+    "email": "will@email.com",
+    "provider": "dito",
+    "role": "admin",
+    "status": "active",
+    "city": "Taguig",
+    "isVerified": true
+  },
+  {
+    "id": "USR-0005",
+    "name": "Sofia Davis",
+    "phone": "9053334455",
+    "provider": "globe",
+    "role": "passenger",
+    "status": "offline",
+    "city": "Pasig",
+    "walletBalance": 500,
+    "isVerified": false
+  },
+  {
+    "id": "USR-0006",
+    "name": "Liam Garcia",
+    "phone": "9995556677",
+    "provider": "smart",
+    "role": "rider",
+    "status": "active",
+    "toda": "Pasay TODA",
+    "bodyNumber": "PS-456",
+    "city": "Pasay",
+     "driversLicense": {
+      "number": "D01-98-765432",
+      "expiryDate": "2024-07-30"
+    },
+    "tricycleRegistration": {
+      "plateNumber": "CD 54321",
+      "expiryDate": "2024-06-25"
+    },
+    "isVerified": true
+  },
+  {
+    "id": "USR-0007",
+    "name": "Ava Rodriguez",
+    "phone": "9177778899",
+    "email": "ava.rodriguez@email.com",
+    "provider": "globe",
+    "role": "passenger",
+    "status": "idle",
+    "city": "Manila",
+    "walletBalance": 2500,
+    "isVerified": true
+  },
+  {
+    "id": "USR-0008",
+    "name": "Noah Martinez",
+    "phone": "9398889900",
+    "provider": "smart",
+    "role": "rider",
+    "status": "inactive",
+    "toda": "Mandaluyong TODA",
+    "bodyNumber": "MD-789",
+    "city": "Mandaluyong",
+     "driversLicense": {
+      "number": "P03-45-678901",
+      "expiryDate": "2026-01-15"
+    },
+    "tricycleRegistration": {
+      "plateNumber": "EF 67890",
+      "expiryDate": "2023-12-01"
+    },
+    "isVerified": false
+  },
+  {
+    "id": "USR-0009",
+    "name": "Emma Hernandez",
+    "phone": "9561239876",
+    "provider": "tnt",
+    "role": "dispatcher",
+    "status": "active",
+    "city": "Quezon City",
+    "isVerified": true
+  },
+  {
+    "id": "USR-0010",
+    "name": "James Wilson",
+    "phone": "9154445566",
+    "provider": "dito",
+    "role": "admin",
+    "status": "inactive",
+    "city": "Taguig",
+    "isVerified": false
+  },
+  {
+    "id": "USR-TEST-01",
+    "name": "Test Dispatcher",
+    "phone": "9171841000",
+    "email": "dispatcher.test@gotryke.com",
+    "provider": "globe",
+    "role": "dispatcher",
+    "status": "active",
+    "city": "Quezon City",
+    "isVerified": true
+  },
+  {
+    "id": "USR-TEST-02",
+    "name": "Test Rider",
+    "phone": "9171841001",
+    "email": "rider.test@gotryke.com",
+    "provider": "smart",
+    "role": "rider",
+    "status": "online",
+    "toda": "Test TODA",
+    "bodyNumber": "TEST-01",
+    "city": "Makati",
+    "walletBalance": 10000,
+    "driversLicense": {
+      "number": "T01-23-456789",
+      "expiryDate": "2028-12-31"
+    },
+    "tricycleRegistration": {
+      "plateNumber": "TEST 123",
+      "expiryDate": "2028-12-31"
+    },
+    "isVerified": true
+  },
+  {
+    "id": "USR-TEST-03",
+    "name": "Test Passenger",
+    "phone": "9171841003",
+    "email": "passenger.test@gotryke.com",
+    "provider": "globe",
+    "role": "passenger",
+    "status": "online",
+    "city": "Taguig",
+    "walletBalance": 10000,
+    "isVerified": true
+  }
+]

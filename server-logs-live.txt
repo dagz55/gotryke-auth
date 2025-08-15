@@ -1,0 +1,1137 @@
+
+> gotryke@2.1.0 dev
+> next dev -p 9002
+
+   ▲ Next.js 15.3.3
+   - Local:        http://localhost:9002
+   - Network:      http://192.168.1.144:9002
+   - Environments: .env
+
+ ✓ Starting...
+ ✓ Ready in 2s
+ ○ Compiling /dashboard ...
+ ✓ Compiled /dashboard in 1735ms (1253 modules)
+ GET /dashboard 200 in 2023ms
+ ✓ Compiled in 114ms (546 modules)
+ ⨯ ./src/lib/supabase-client.ts
+Error:   [31mx[0m You're importing a component that needs "next/headers". That only works in a Server Component which is not supported in the pages/ directory. Read more: https://nextjs.org/docs/app/building-your-application/rendering/server-components
+  [31m|[0m
+
+   ,-[[36;1;4m/Users/robertsuarez/gotryke-auth/src/lib/supabase-client.ts[0m:3:1]
+ [2m1[0m | import { createClient } from '@supabase/supabase-js'
+ [2m2[0m | import { createBrowserClient, createServerClient } from '@supabase/ssr'
+ [2m3[0m | import { cookies } from 'next/headers'
+   : [35;1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+ [2m4[0m | 
+ [2m5[0m | const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
+ [2m6[0m | const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+   `----
+
+Import trace for requested module:
+./src/lib/supabase-client.ts
+./src/contexts/auth-context.tsx
+ ⨯ ./src/lib/supabase-client.ts
+Error:   [31mx[0m You're importing a component that needs "next/headers". That only works in a Server Component which is not supported in the pages/ directory. Read more: https://nextjs.org/docs/app/building-your-application/rendering/server-components
+  [31m|[0m
+
+   ,-[[36;1;4m/Users/robertsuarez/gotryke-auth/src/lib/supabase-client.ts[0m:3:1]
+ [2m1[0m | import { createBrowserClient, createServerClient } from '@supabase/ssr'
+ [2m2[0m | import { createClient } from '@supabase/supabase-js'
+ [2m3[0m | import { cookies } from 'next/headers'
+   : [35;1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+ [2m4[0m | 
+ [2m5[0m | const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
+ [2m6[0m | const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+   `----
+
+Import trace for requested module:
+./src/lib/supabase-client.ts
+./src/contexts/auth-context.tsx
+ ⨯ ./src/lib/supabase-client.ts
+Error:   [31mx[0m You're importing a component that needs "next/headers". That only works in a Server Component which is not supported in the pages/ directory. Read more: https://nextjs.org/docs/app/building-your-application/rendering/server-components
+  [31m|[0m
+
+   ,-[[36;1;4m/Users/robertsuarez/gotryke-auth/src/lib/supabase-client.ts[0m:3:1]
+ [2m1[0m | import { createBrowserClient, createServerClient } from '@supabase/ssr'
+ [2m2[0m | import { createClient } from '@supabase/supabase-js'
+ [2m3[0m | import { cookies } from 'next/headers'
+   : [35;1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+ [2m4[0m | 
+ [2m5[0m | const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
+ [2m6[0m | const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+   `----
+
+Import trace for requested module:
+./src/lib/supabase-client.ts
+./src/contexts/auth-context.tsx
+ ⨯ ./src/lib/supabase-client.ts
+Error:   [31mx[0m You're importing a component that needs "next/headers". That only works in a Server Component which is not supported in the pages/ directory. Read more: https://nextjs.org/docs/app/building-your-application/rendering/server-components
+  [31m|[0m
+
+   ,-[[36;1;4m/Users/robertsuarez/gotryke-auth/src/lib/supabase-client.ts[0m:3:1]
+ [2m1[0m | import { createBrowserClient, createServerClient } from '@supabase/ssr'
+ [2m2[0m | import { createClient } from '@supabase/supabase-js'
+ [2m3[0m | import { cookies } from 'next/headers'
+   : [35;1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+ [2m4[0m | 
+ [2m5[0m | const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
+ [2m6[0m | const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+   `----
+
+Import trace for requested module:
+./src/lib/supabase-client.ts
+./src/contexts/auth-context.tsx
+ ⨯ ./src/lib/supabase-client.ts
+Error:   [31mx[0m You're importing a component that needs "next/headers". That only works in a Server Component which is not supported in the pages/ directory. Read more: https://nextjs.org/docs/app/building-your-application/rendering/server-components
+  [31m|[0m
+
+   ,-[[36;1;4m/Users/robertsuarez/gotryke-auth/src/lib/supabase-client.ts[0m:3:1]
+ [2m1[0m | import { createBrowserClient, createServerClient } from '@supabase/ssr'
+ [2m2[0m | import { createClient } from '@supabase/supabase-js'
+ [2m3[0m | import { cookies } from 'next/headers'
+   : [35;1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+ [2m4[0m | 
+ [2m5[0m | const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
+ [2m6[0m | const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+   `----
+
+Import trace for requested module:
+./src/lib/supabase-client.ts
+./src/contexts/auth-context.tsx
+ ⨯ ./src/lib/supabase-client.ts
+Error:   [31mx[0m You're importing a component that needs "next/headers". That only works in a Server Component which is not supported in the pages/ directory. Read more: https://nextjs.org/docs/app/building-your-application/rendering/server-components
+  [31m|[0m
+
+   ,-[[36;1;4m/Users/robertsuarez/gotryke-auth/src/lib/supabase-client.ts[0m:3:1]
+ [2m1[0m | import { createBrowserClient, createServerClient } from '@supabase/ssr'
+ [2m2[0m | import { createClient } from '@supabase/supabase-js'
+ [2m3[0m | import { cookies } from 'next/headers'
+   : [35;1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+ [2m4[0m | 
+ [2m5[0m | const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
+ [2m6[0m | const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+   `----
+
+Import trace for requested module:
+./src/lib/supabase-client.ts
+./src/contexts/auth-context.tsx
+ ⨯ ./src/lib/supabase-client.ts
+Error:   [31mx[0m You're importing a component that needs "next/headers". That only works in a Server Component which is not supported in the pages/ directory. Read more: https://nextjs.org/docs/app/building-your-application/rendering/server-components
+  [31m|[0m
+
+   ,-[[36;1;4m/Users/robertsuarez/gotryke-auth/src/lib/supabase-client.ts[0m:3:1]
+ [2m1[0m | import { createBrowserClient, createServerClient } from '@supabase/ssr'
+ [2m2[0m | import { createClient } from '@supabase/supabase-js'
+ [2m3[0m | import { cookies } from 'next/headers'
+   : [35;1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+ [2m4[0m | 
+ [2m5[0m | const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
+ [2m6[0m | const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+   `----
+
+Import trace for requested module:
+./src/lib/supabase-client.ts
+./src/contexts/auth-context.tsx
+ ⨯ ./src/lib/supabase-client.ts
+Error:   [31mx[0m You're importing a component that needs "next/headers". That only works in a Server Component which is not supported in the pages/ directory. Read more: https://nextjs.org/docs/app/building-your-application/rendering/server-components
+  [31m|[0m
+
+   ,-[[36;1;4m/Users/robertsuarez/gotryke-auth/src/lib/supabase-client.ts[0m:3:1]
+ [2m1[0m | import { createBrowserClient, createServerClient } from '@supabase/ssr'
+ [2m2[0m | import { createClient } from '@supabase/supabase-js'
+ [2m3[0m | import { cookies } from 'next/headers'
+   : [35;1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+ [2m4[0m | 
+ [2m5[0m | const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
+ [2m6[0m | const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+   `----
+
+Import trace for requested module:
+./src/lib/supabase-client.ts
+./src/contexts/auth-context.tsx
+ ⨯ ./src/lib/supabase-client.ts
+Error:   [31mx[0m You're importing a component that needs "next/headers". That only works in a Server Component which is not supported in the pages/ directory. Read more: https://nextjs.org/docs/app/building-your-application/rendering/server-components
+  [31m|[0m
+
+   ,-[[36;1;4m/Users/robertsuarez/gotryke-auth/src/lib/supabase-client.ts[0m:3:1]
+ [2m1[0m | import { createBrowserClient, createServerClient } from '@supabase/ssr'
+ [2m2[0m | import { createClient } from '@supabase/supabase-js'
+ [2m3[0m | import { cookies } from 'next/headers'
+   : [35;1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+ [2m4[0m | 
+ [2m5[0m | const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
+ [2m6[0m | const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+   `----
+
+Import trace for requested module:
+./src/lib/supabase-client.ts
+./src/contexts/auth-context.tsx
+ ○ Compiling / ...
+ ⨯ ./src/lib/supabase-client.ts
+Error:   [31mx[0m You're importing a component that needs "next/headers". That only works in a Server Component which is not supported in the pages/ directory. Read more: https://nextjs.org/docs/app/building-your-application/rendering/server-components
+  [31m|[0m
+
+   ,-[[36;1;4m/Users/robertsuarez/gotryke-auth/src/lib/supabase-client.ts[0m:3:1]
+ [2m1[0m | import { createBrowserClient, createServerClient } from '@supabase/ssr'
+ [2m2[0m | import { createClient } from '@supabase/supabase-js'
+ [2m3[0m | import { cookies } from 'next/headers'
+   : [35;1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+ [2m4[0m | 
+ [2m5[0m | const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
+ [2m6[0m | const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+   `----
+
+Import trace for requested module:
+./src/lib/supabase-client.ts
+./src/contexts/auth-context.tsx
+ ⨯ ./src/lib/supabase-client.ts
+Error:   [31mx[0m You're importing a component that needs "next/headers". That only works in a Server Component which is not supported in the pages/ directory. Read more: https://nextjs.org/docs/app/building-your-application/rendering/server-components
+  [31m|[0m
+
+   ,-[[36;1;4m/Users/robertsuarez/gotryke-auth/src/lib/supabase-client.ts[0m:3:1]
+ [2m1[0m | import { createBrowserClient, createServerClient } from '@supabase/ssr'
+ [2m2[0m | import { createClient } from '@supabase/supabase-js'
+ [2m3[0m | import { cookies } from 'next/headers'
+   : [35;1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+ [2m4[0m | 
+ [2m5[0m | const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
+ [2m6[0m | const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+   `----
+
+Import trace for requested module:
+./src/lib/supabase-client.ts
+./src/contexts/auth-context.tsx
+ ⨯ ./src/lib/supabase-client.ts
+Error:   [31mx[0m You're importing a component that needs "next/headers". That only works in a Server Component which is not supported in the pages/ directory. Read more: https://nextjs.org/docs/app/building-your-application/rendering/server-components
+  [31m|[0m
+
+   ,-[[36;1;4m/Users/robertsuarez/gotryke-auth/src/lib/supabase-client.ts[0m:3:1]
+ [2m1[0m | import { createBrowserClient, createServerClient } from '@supabase/ssr'
+ [2m2[0m | import { createClient } from '@supabase/supabase-js'
+ [2m3[0m | import { cookies } from 'next/headers'
+   : [35;1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+ [2m4[0m | 
+ [2m5[0m | const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
+ [2m6[0m | const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+   `----
+
+Import trace for requested module:
+./src/lib/supabase-client.ts
+./src/contexts/auth-context.tsx
+ GET / 500 in 3745ms
+ ⨯ ./src/lib/supabase-client.ts
+Error:   [31mx[0m You're importing a component that needs "next/headers". That only works in a Server Component which is not supported in the pages/ directory. Read more: https://nextjs.org/docs/app/building-your-application/rendering/server-components
+  [31m|[0m
+
+   ,-[[36;1;4m/Users/robertsuarez/gotryke-auth/src/lib/supabase-client.ts[0m:3:1]
+ [2m1[0m | import { createBrowserClient, createServerClient } from '@supabase/ssr'
+ [2m2[0m | import { createClient } from '@supabase/supabase-js'
+ [2m3[0m | import { cookies } from 'next/headers'
+   : [35;1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+ [2m4[0m | 
+ [2m5[0m | const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
+ [2m6[0m | const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+   `----
+
+Import trace for requested module:
+./src/lib/supabase-client.ts
+./src/contexts/auth-context.tsx
+ GET / 500 in 21ms
+ GET / 500 in 354ms
+ GET / 500 in 127ms
+ ✓ Compiled /_not-found in 2.5s (1802 modules)
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ GET /_next/static/webpack/0159060eab1e7992.webpack.hot-update.json 404 in 1683ms
+ GET /_next/static/webpack/0159060eab1e7992.webpack.hot-update.json 404 in 1689ms
+ ○ Compiling / ...
+ ✓ Compiled / in 529ms (1183 modules)
+ GET / 200 in 1067ms
+ GET / 200 in 1073ms
+[Error [TimeoutError]: The operation was aborted due to timeout] {
+  code: 23,
+  INDEX_SIZE_ERR: 1,
+  DOMSTRING_SIZE_ERR: 2,
+  HIERARCHY_REQUEST_ERR: 3,
+  WRONG_DOCUMENT_ERR: 4,
+  INVALID_CHARACTER_ERR: 5,
+  NO_DATA_ALLOWED_ERR: 6,
+  NO_MODIFICATION_ALLOWED_ERR: 7,
+  NOT_FOUND_ERR: 8,
+  NOT_SUPPORTED_ERR: 9,
+  INUSE_ATTRIBUTE_ERR: 10,
+  INVALID_STATE_ERR: 11,
+  SYNTAX_ERR: 12,
+  INVALID_MODIFICATION_ERR: 13,
+  NAMESPACE_ERR: 14,
+  INVALID_ACCESS_ERR: 15,
+  VALIDATION_ERR: 16,
+  TYPE_MISMATCH_ERR: 17,
+  SECURITY_ERR: 18,
+  NETWORK_ERR: 19,
+  ABORT_ERR: 20,
+  URL_MISMATCH_ERR: 21,
+  QUOTA_EXCEEDED_ERR: 22,
+  TIMEOUT_ERR: 23,
+  INVALID_NODE_TYPE_ERR: 24,
+  DATA_CLONE_ERR: 25
+}
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ ✓ Compiled in 913ms (2377 modules)
+ GET / 200 in 815ms
+ GET / 200 in 785ms
+ ✓ Compiled in 221ms (2373 modules)
+ ○ Compiling /api/auth/signin ...
+ ⚠ ./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+Critical dependency: the request of a dependency is an expression
+
+Import trace for requested module:
+./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+./node_modules/@supabase/realtime-js/dist/module/index.js
+./node_modules/@supabase/supabase-js/dist/module/index.js
+./src/lib/supabase-admin.ts
+./src/lib/supabase-auth.ts
+./src/app/api/auth/signin/route.ts
+🔐 SIGNIN API DEBUG: { phone: '9171841002', pin: 'PROVIDED' }
+🔄 Calling signInWithPhoneAndPin...
+🔐 Attempting phone auth with: { phone: '+639171841002' }
+❌ Supabase auth error: Error [AuthApiError]: Invalid login credentials
+    at async signInWithPhoneAndPin (src/lib/supabase-auth.ts:233:28)
+    at async POST (src/app/api/auth/signin/route.ts:27:19)
+  231 |
+  232 |     // Use Supabase's native phone + password authentication
+> 233 |     const { data, error } = await supabase.auth.signInWithPassword({
+      |                            ^
+  234 |       phone: formattedPhone,
+  235 |       password: pin, // PIN acts as the password
+  236 |     }) {
+  __isAuthError: true,
+  status: 400,
+  code: 'invalid_credentials'
+}
+📊 signInWithPhoneAndPin result: {
+  success: false,
+  hasUser: false,
+  hasSession: false,
+  error: 'Invalid login credentials'
+}
+ POST /api/auth/signin 400 in 3483ms
+ ✓ Compiled /api/auth/signin in 551ms (1182 modules)
+ GET / 200 in 425ms
+ ○ Compiling /api/auth/signin ...
+ ⚠ ./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+Critical dependency: the request of a dependency is an expression
+
+Import trace for requested module:
+./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+./node_modules/@supabase/realtime-js/dist/module/index.js
+./node_modules/@supabase/supabase-js/dist/module/index.js
+./node_modules/@supabase/ssr/dist/module/createBrowserClient.js
+./node_modules/@supabase/ssr/dist/module/index.js
+./src/lib/supabase-server.ts
+./src/app/api/auth/signin/route.ts
+🔐 SIGNIN API DEBUG: { phone: '9171841002', pin: 'PROVIDED' }
+🔄 Calling signInWithPhoneAndPin...
+🔐 Attempting phone auth with: { phone: '+639171841002' }
+ GET / 200 in 376ms
+ GET / 200 in 586ms
+ POST /api/auth/signin 200 in 1175ms
+ GET / 200 in 296ms
+ GET / 200 in 303ms
+📊 signInWithPhoneAndPin result: {
+  success: false,
+  hasUser: false,
+  hasSession: false,
+  error: 'User not found or account is inactive'
+}
+ ⚠ ./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+Critical dependency: the request of a dependency is an expression
+
+Import trace for requested module:
+./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+./node_modules/@supabase/realtime-js/dist/module/index.js
+./node_modules/@supabase/supabase-js/dist/module/index.js
+./node_modules/@supabase/ssr/dist/module/createBrowserClient.js
+./node_modules/@supabase/ssr/dist/module/index.js
+./src/lib/supabase-server.ts
+./src/app/api/auth/signin/route.ts
+ ⚠ ./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+Critical dependency: the request of a dependency is an expression
+
+Import trace for requested module:
+./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+./node_modules/@supabase/realtime-js/dist/module/index.js
+./node_modules/@supabase/supabase-js/dist/module/index.js
+./src/lib/supabase-admin.ts
+./src/lib/supabase-auth.ts
+./src/app/api/auth/signin/route.ts
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 794ms
+ ⚠ ./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+Critical dependency: the request of a dependency is an expression
+
+Import trace for requested module:
+./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+./node_modules/@supabase/realtime-js/dist/module/index.js
+./node_modules/@supabase/supabase-js/dist/module/index.js
+./src/lib/supabase-admin.ts
+./src/lib/supabase-auth.ts
+./src/app/api/auth/signin/route.ts
+ ⚠ ./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+Critical dependency: the request of a dependency is an expression
+
+Import trace for requested module:
+./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+./node_modules/@supabase/realtime-js/dist/module/index.js
+./node_modules/@supabase/supabase-js/dist/module/index.js
+./src/lib/supabase-admin.ts
+./src/lib/supabase-auth.ts
+./src/app/api/auth/signin/route.ts
+ GET /forgot-pin 200 in 978ms
+ GET /forgot-pin 200 in 828ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 34ms
+ ⨯ upstream image response failed for https://elnntdfdlojxpcjiyehe.supabase.co/storage/v1/object/public/images/gotryke-logo.png 400
+ ✓ Compiled /forgot-pin in 1692ms (2399 modules)
+ GET /forgot-pin 200 in 1193ms
+ GET / 200 in 1205ms
+ GET /forgot-pin 200 in 1429ms
+ GET / 200 in 1757ms
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 1058ms (2403 modules)
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 1267ms
+ ✓ Compiled in 699ms (2403 modules)
+ GET /forgot-pin 200 in 112ms
+ GET /forgot-pin 200 in 154ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 35ms
+ ✓ Compiled in 555ms (2403 modules)
+ GET /forgot-pin 200 in 278ms
+ GET / 200 in 286ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 169ms
+ GET /forgot-pin 200 in 488ms
+ GET / 200 in 535ms
+ ✓ Compiled in 647ms (2403 modules)
+ GET /forgot-pin 200 in 98ms
+ GET / 200 in 99ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 62ms
+ GET /forgot-pin 200 in 217ms
+ GET / 200 in 265ms
+ ✓ Compiled in 722ms (2403 modules)
+ GET /forgot-pin 200 in 100ms
+ GET / 200 in 98ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 51ms
+ GET /forgot-pin 200 in 177ms
+ GET / 200 in 193ms
+ POST /api/auth/reset-pin 404 in 65ms
+ ✓ Compiled in 1364ms (2403 modules)
+ GET /forgot-pin 200 in 450ms
+ GET / 200 in 461ms
+ GET /forgot-pin 200 in 961ms
+ GET / 200 in 1043ms
+ ✓ Compiled in 1159ms (2389 modules)
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 1120ms
+ ✓ Compiled in 793ms (2403 modules)
+ ✓ Compiled in 1326ms (1210 modules)
+ ✓ Compiled in 1149ms (2388 modules)
+ ✓ Compiled in 777ms (2402 modules)
+ ✓ Compiled in 449ms (2402 modules)
+ ⨯ Error: Attempted to call the default export of "/Users/robertsuarez/gotryke-auth/src/components/auth/auth-redirector.tsx" from the server, but it's on the client. It's not possible to invoke a client function from the server, it can only be rendered as a Component or passed to props of a Client Component.
+    at Module.<anonymous> (.next/server/app/forgot-pin/page.js:132:20)
+    at RootLayout (src/app/layout.tsx:38:65)
+  36 |             {/* Mount redirector in client to handle sign-in redirect quickly */}
+  37 |             {/* @ts-expect-error Server/Client boundary handled in component file */}
+> 38 |             {require('@/components/auth/auth-redirector').default?.()}
+     |                                                                 ^
+  39 |             {children}
+  40 |           </AuthProvider>
+  41 |           <Toaster /> {
+  digest: '1438977125'
+}
+ GET /forgot-pin 500 in 393ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled /_not-found in 371ms (2392 modules)
+ ⨯ Error: Attempted to call the default export of "/Users/robertsuarez/gotryke-auth/src/components/auth/auth-redirector.tsx" from the server, but it's on the client. It's not possible to invoke a client function from the server, it can only be rendered as a Component or passed to props of a Client Component.
+    at Module.<anonymous> (.next/server/app/_not-found/page.js:83:20)
+    at RootLayout (src/app/layout.tsx:38:65)
+  36 |             {/* Mount redirector in client to handle sign-in redirect quickly */}
+  37 |             {/* @ts-expect-error Server/Client boundary handled in component file */}
+> 38 |             {require('@/components/auth/auth-redirector').default?.()}
+     |                                                                 ^
+  39 |             {children}
+  40 |           </AuthProvider>
+  41 |           <Toaster /> {
+  digest: '1111381106'
+}
+ GET /.well-known/appspecific/com.chrome.devtools.json 500 in 498ms
+ ⨯ Error: Attempted to call the default export of "/Users/robertsuarez/gotryke-auth/src/components/auth/auth-redirector.tsx" from the server, but it's on the client. It's not possible to invoke a client function from the server, it can only be rendered as a Component or passed to props of a Client Component.
+    at Module.<anonymous> (.next/server/app/_not-found/page.js:83:20)
+    at RootLayout (src/app/layout.tsx:38:65)
+  36 |             {/* Mount redirector in client to handle sign-in redirect quickly */}
+  37 |             {/* @ts-expect-error Server/Client boundary handled in component file */}
+> 38 |             {require('@/components/auth/auth-redirector').default?.()}
+     |                                                                 ^
+  39 |             {children}
+  40 |           </AuthProvider>
+  41 |           <Toaster /> {
+  digest: '1111381106'
+}
+ GET / 500 in 311ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 908ms (2406 modules)
+ GET / 200 in 509ms
+ GET /forgot-pin 200 in 568ms
+ GET /forgot-pin 200 in 274ms
+ GET / 200 in 299ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 216ms
+ ✓ Compiled in 875ms (2406 modules)
+ GET /forgot-pin 200 in 122ms
+ GET / 200 in 123ms
+ ✓ Compiled in 534ms (2406 modules)
+ GET /forgot-pin 200 in 50ms
+ GET / 200 in 56ms
+ POST /api/auth/reset-pin 404 in 131ms
+ GET /forgot-pin 200 in 266ms
+ GET / 200 in 260ms
+ ✓ Compiled in 1535ms (2402 modules)
+ ✓ Compiled in 585ms (1211 modules)
+ ✓ Compiled in 332ms (1211 modules)
+ GET /forgot-pin 200 in 367ms
+ ✓ Compiled /_not-found in 429ms (2406 modules)
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 527ms
+ GET /forgot-pin? 200 in 160ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 33ms
+ ○ Compiling /api/auth/reset-pin ...
+ ⚠ ./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+Critical dependency: the request of a dependency is an expression
+
+Import trace for requested module:
+./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+./node_modules/@supabase/realtime-js/dist/module/index.js
+./node_modules/@supabase/supabase-js/dist/module/index.js
+./src/lib/supabase-admin.ts
+./src/lib/supabase-auth.ts
+./src/app/api/auth/reset-pin/route.ts
+ POST /api/auth/reset-pin 200 in 1577ms
+ ✓ Compiled /api/auth/reset-pin in 944ms (2402 modules)
+ GET /forgot-pin 200 in 124ms
+ ✓ Compiled in 611ms (1211 modules)
+ GET /forgot-pin 200 in 39ms
+ GET / 200 in 1619ms
+ ○ Compiling /api/auth/signin ...
+ ⚠ ./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+Critical dependency: the request of a dependency is an expression
+
+Import trace for requested module:
+./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+./node_modules/@supabase/realtime-js/dist/module/index.js
+./node_modules/@supabase/supabase-js/dist/module/index.js
+./src/lib/supabase-admin.ts
+./src/lib/supabase-auth.ts
+./src/app/api/auth/signin/route.ts
+🔐 SIGNIN API DEBUG: { phone: '9171841002', pin: 'PROVIDED' }
+🔄 Calling signInWithPhoneAndPin...
+🔐 Attempting phone auth with: { phone: '+639171841002' }
+ GET / 200 in 933ms
+📊 signInWithPhoneAndPin result: {
+  success: false,
+  hasUser: false,
+  hasSession: false,
+  error: 'User not found or account is inactive'
+}
+ POST /api/auth/signin 400 in 4330ms
+ ⚠ ./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+Critical dependency: the request of a dependency is an expression
+
+Import trace for requested module:
+./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+./node_modules/@supabase/realtime-js/dist/module/index.js
+./node_modules/@supabase/supabase-js/dist/module/index.js
+./src/lib/supabase-admin.ts
+./src/lib/supabase-auth.ts
+./src/app/api/auth/signin/route.ts
+ ⚠ ./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+Critical dependency: the request of a dependency is an expression
+
+Import trace for requested module:
+./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+./node_modules/@supabase/realtime-js/dist/module/index.js
+./node_modules/@supabase/supabase-js/dist/module/index.js
+./src/lib/supabase-admin.ts
+./src/lib/supabase-auth.ts
+./src/app/api/auth/signin/route.ts
+ GET / 200 in 174ms
+Send verification error: Error: Custom friendly name not allowed
+    at async sendPhoneVerification (src/lib/supabase-auth.ts:78:25)
+    at async POST (src/app/api/auth/send-otp/route.ts:15:19)
+  76 |     
+  77 |     // Send verification via Twilio
+> 78 |     const verification = await twilio.verify.v2
+     |                         ^
+  79 |       .services(VERIFY_SERVICE_SID)
+  80 |       .verifications.create({
+  81 |         to: formattedPhone, {
+  status: 403,
+  code: 60204,
+  moreInfo: 'https://www.twilio.com/docs/errors/60204',
+  details: undefined
+}
+ POST /api/auth/send-otp 400 in 3221ms
+ ✓ Compiled /api/auth/send-otp in 1486ms (1191 modules)
+ GET / 200 in 1705ms
+ ○ Compiling /api/auth/signin ...
+ ⚠ ./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+Critical dependency: the request of a dependency is an expression
+
+Import trace for requested module:
+./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+./node_modules/@supabase/realtime-js/dist/module/index.js
+./node_modules/@supabase/supabase-js/dist/module/index.js
+./node_modules/@supabase/ssr/dist/module/createBrowserClient.js
+./node_modules/@supabase/ssr/dist/module/index.js
+./src/lib/supabase-server.ts
+./src/app/api/auth/signin/route.ts
+🔐 SIGNIN API DEBUG: { phone: '9171841002', pin: 'PROVIDED' }
+🔄 Calling signInWithPhoneAndPin...
+🔐 Attempting phone auth with: { phone: '+639171841002' }
+ GET / 200 in 765ms
+📊 signInWithPhoneAndPin result: {
+  success: false,
+  hasUser: false,
+  hasSession: false,
+  error: 'User not found or account is inactive'
+}
+ POST /api/auth/signin 400 in 2926ms
+ ⚠ ./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+Critical dependency: the request of a dependency is an expression
+
+Import trace for requested module:
+./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+./node_modules/@supabase/realtime-js/dist/module/index.js
+./node_modules/@supabase/supabase-js/dist/module/index.js
+./node_modules/@supabase/ssr/dist/module/createBrowserClient.js
+./node_modules/@supabase/ssr/dist/module/index.js
+./src/lib/supabase-server.ts
+./src/app/api/auth/signin/route.ts
+ ⚠ ./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+Critical dependency: the request of a dependency is an expression
+
+Import trace for requested module:
+./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+./node_modules/@supabase/realtime-js/dist/module/index.js
+./node_modules/@supabase/supabase-js/dist/module/index.js
+./src/lib/supabase-admin.ts
+./src/lib/supabase-auth.ts
+./src/app/api/auth/signin/route.ts
+ GET / 200 in 108ms
+Database error storing verification: {
+  code: '23502',
+  details: 'Failing row contains (386f9633-502c-4712-b4b5-8303c6bc6522, +639171841002, VEbab2ccd817521287ac9863501e7698fa, null, 0, 3, 2025-08-11 19:23:26.273+00, f, 2025-08-11 19:13:26.390568+00).',
+  hint: null,
+  message: 'null value in column "otp_code" of relation "phone_verifications" violates not-null constraint'
+}
+ POST /api/auth/send-otp 400 in 2599ms
+Database error storing verification: {
+  code: '23502',
+  details: 'Failing row contains (b25b4c83-bb45-47c7-ae5e-3072e6c25053, +639171841002, VEbab2ccd817521287ac9863501e7698fa, null, 0, 3, 2025-08-11 19:24:14.875+00, f, 2025-08-11 19:14:15.000305+00).',
+  hint: null,
+  message: 'null value in column "otp_code" of relation "phone_verifications" violates not-null constraint'
+}
+ POST /api/auth/send-otp 400 in 2201ms
+ ⚠ ./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+Critical dependency: the request of a dependency is an expression
+
+Import trace for requested module:
+./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+./node_modules/@supabase/realtime-js/dist/module/index.js
+./node_modules/@supabase/supabase-js/dist/module/index.js
+./src/lib/supabase-admin.ts
+./src/lib/supabase-auth.ts
+./src/app/api/auth/signin/route.ts
+ ✓ Compiled /_not-found in 1846ms (2392 modules)
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 2418ms
+ ⚠ ./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+Critical dependency: the request of a dependency is an expression
+
+Import trace for requested module:
+./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+./node_modules/@supabase/realtime-js/dist/module/index.js
+./node_modules/@supabase/supabase-js/dist/module/index.js
+./src/lib/supabase-admin.ts
+./src/lib/supabase-auth.ts
+./src/app/api/auth/send-otp/route.ts
+ ○ Compiling /api/auth/send-otp ...
+ GET /api/auth/send-otp 405 in 807ms
+ ✓ Compiled /api/auth/send-otp in 1497ms (1191 modules)
+ ✓ Compiled in 911ms (1211 modules)
+ GET / 200 in 606ms
+ ✓ Compiled in 555ms (1211 modules)
+ GET / 200 in 54ms
+ ✓ Compiled in 523ms (1211 modules)
+ GET / 200 in 70ms
+ ✓ Compiled in 462ms (1211 modules)
+ GET / 200 in 24ms
+   Reload env: .env
+ ✓ Compiled in 1000ms (2388 modules)
+ GET / 200 in 93ms
+   Reload env: .env
+ ✓ Compiled in 388ms (2388 modules)
+ GET / 200 in 81ms
+   Reload env: .env
+ ✓ Compiled in 314ms (2388 modules)
+ GET / 200 in 43ms
+   Reload env: .env
+ ✓ Compiled in 282ms (2388 modules)
+ GET / 200 in 37ms
+   Reload env: .env
+ ✓ Compiled in 705ms (2388 modules)
+ GET / 200 in 59ms
+   Reload env: .env
+ ✓ Compiled in 270ms (2388 modules)
+ GET / 200 in 34ms
+   Reload env: .env
+ ✓ Compiled in 158ms (2388 modules)
+ GET / 200 in 37ms
+ GET / 200 in 170ms
+ GET / 200 in 544ms
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 1203ms (2392 modules)
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 1449ms
+ ✓ Compiled in 4.7s (2402 modules)
+ GET / 200 in 185ms
+ GET / 200 in 180ms
+ ✓ Compiled in 1329ms (2402 modules)
+ GET / 200 in 641ms
+ GET / 200 in 628ms
+ ✓ Compiled in 1306ms (2402 modules)
+ GET / 200 in 131ms
+ GET / 200 in 134ms
+ ✓ Compiled in 1889ms (2402 modules)
+ GET / 200 in 39ms
+ GET / 200 in 48ms
+ ✓ Compiled in 965ms (2402 modules)
+ GET / 200 in 147ms
+ GET / 200 in 146ms
+ ○ Compiling /api/auth/signin ...
+ ⚠ ./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+Critical dependency: the request of a dependency is an expression
+
+Import trace for requested module:
+./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+./node_modules/@supabase/realtime-js/dist/module/index.js
+./node_modules/@supabase/supabase-js/dist/module/index.js
+./src/lib/supabase-admin.ts
+./src/lib/supabase-auth.ts
+./src/app/api/auth/signin/route.ts
+🔐 Attempting phone auth with: { phone: '+639171841002' }
+ GET / 200 in 1850ms
+ GET / 200 in 1861ms
+ POST /api/auth/signin 404 in 5267ms
+ ⚠ ./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+Critical dependency: the request of a dependency is an expression
+
+Import trace for requested module:
+./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+./node_modules/@supabase/realtime-js/dist/module/index.js
+./node_modules/@supabase/supabase-js/dist/module/index.js
+./src/lib/supabase-admin.ts
+./src/lib/supabase-auth.ts
+./src/app/api/auth/signin/route.ts
+ ⚠ ./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+Critical dependency: the request of a dependency is an expression
+
+Import trace for requested module:
+./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+./node_modules/@supabase/realtime-js/dist/module/index.js
+./node_modules/@supabase/supabase-js/dist/module/index.js
+./src/lib/supabase-admin.ts
+./src/lib/supabase-auth.ts
+./src/app/api/auth/signin/route.ts
+ GET / 200 in 216ms
+ GET / 200 in 217ms
+Database error storing verification: {
+  code: '23502',
+  details: 'Failing row contains (45c167d9-dd3e-4498-9fee-6c92bb913ff7, +639171841002, VE2693de1be51aaa6837d9e61ddff109d3, null, 0, 5, 2025-08-11 19:47:30.996+00, f, 2025-08-11 19:37:31.208053+00).',
+  hint: null,
+  message: 'null value in column "otp_code" of relation "phone_verifications" violates not-null constraint'
+}
+ POST /api/auth/send-otp 400 in 2682ms
+ ✓ Compiled /api/auth/send-otp in 1530ms (1191 modules)
+ GET / 200 in 1010ms
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 1693ms (2392 modules)
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 1941ms
+ ○ Compiling /api/auth/send-otp ...
+ ⚠ ./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+Critical dependency: the request of a dependency is an expression
+
+Import trace for requested module:
+./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+./node_modules/@supabase/realtime-js/dist/module/index.js
+./node_modules/@supabase/supabase-js/dist/module/index.js
+./src/lib/supabase-admin.ts
+./src/lib/supabase-auth.ts
+./src/app/api/auth/send-otp/route.ts
+ GET / 200 in 696ms
+ GET / 200 in 760ms
+Non-fatal: Failed to store verification record: {
+  code: '23502',
+  details: 'Failing row contains (17a4f91b-7362-4c49-ac95-7e2ba60fd6f4, +639171841002, VE2693de1be51aaa6837d9e61ddff109d3, null, 0, 5, 2025-08-11 19:51:58.127+00, f, 2025-08-11 19:41:58.198851+00).',
+  hint: null,
+  message: 'null value in column "otp_code" of relation "phone_verifications" violates not-null constraint'
+}
+ POST /api/auth/send-otp 200 in 5041ms
+ ⚠ ./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+Critical dependency: the request of a dependency is an expression
+
+Import trace for requested module:
+./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+./node_modules/@supabase/realtime-js/dist/module/index.js
+./node_modules/@supabase/supabase-js/dist/module/index.js
+./src/lib/supabase-admin.ts
+./src/lib/supabase-auth.ts
+./src/app/api/auth/send-otp/route.ts
+ ⚠ ./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+Critical dependency: the request of a dependency is an expression
+
+Import trace for requested module:
+./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+./node_modules/@supabase/realtime-js/dist/module/index.js
+./node_modules/@supabase/supabase-js/dist/module/index.js
+./src/lib/supabase-admin.ts
+./src/lib/supabase-auth.ts
+./src/app/api/auth/send-otp/route.ts
+ POST /api/auth/verify-otp 200 in 2614ms
+ ⚠ ./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+Critical dependency: the request of a dependency is an expression
+
+Import trace for requested module:
+./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+./node_modules/@supabase/realtime-js/dist/module/index.js
+./node_modules/@supabase/supabase-js/dist/module/index.js
+./src/lib/supabase-admin.ts
+./src/lib/supabase-auth.ts
+./src/app/api/auth/send-otp/route.ts
+ ⚠ ./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+Critical dependency: the request of a dependency is an expression
+
+Import trace for requested module:
+./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+./node_modules/@supabase/realtime-js/dist/module/index.js
+./node_modules/@supabase/supabase-js/dist/module/index.js
+./src/lib/supabase-admin.ts
+./src/lib/supabase-auth.ts
+./src/app/api/auth/verify-otp/route.ts
+ POST /api/auth/signup 400 in 1507ms
+ ✓ Compiled /api/auth/signup in 1611ms (1191 modules)
+ ✓ Compiled in 1307ms (1211 modules)
+ GET / 200 in 281ms
+ GET / 200 in 282ms
+ ✓ Compiled in 1115ms (1211 modules)
+ GET / 200 in 62ms
+ GET / 200 in 69ms
+ ✓ Compiled in 647ms (1211 modules)
+ GET / 200 in 100ms
+ GET / 200 in 112ms
+ GET / 200 in 370ms
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 625ms (2406 modules)
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 783ms
+ GET / 200 in 27ms
+ GET / 200 in 208ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 54ms
+ ○ Compiling /api/auth/send-otp ...
+ ⚠ ./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+Critical dependency: the request of a dependency is an expression
+
+Import trace for requested module:
+./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+./node_modules/@supabase/realtime-js/dist/module/index.js
+./node_modules/@supabase/supabase-js/dist/module/index.js
+./src/lib/supabase-admin.ts
+./src/lib/supabase-auth.ts
+./src/app/api/auth/send-otp/route.ts
+ GET / 200 in 1174ms
+ GET / 200 in 1179ms
+Non-fatal: Failed to store verification record: {
+  code: '23502',
+  details: 'Failing row contains (cc01b8e5-f4a9-40bf-aa28-200ab7786e86, +639171841002, VEccce4310bce3a61bf3e95fbf4217c5e4, null, 0, 5, 2025-08-11 19:55:49.536+00, f, 2025-08-11 19:45:49.6028+00).',
+  hint: null,
+  message: 'null value in column "otp_code" of relation "phone_verifications" violates not-null constraint'
+}
+ POST /api/auth/send-otp 200 in 4432ms
+ ⚠ ./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+Critical dependency: the request of a dependency is an expression
+
+Import trace for requested module:
+./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+./node_modules/@supabase/realtime-js/dist/module/index.js
+./node_modules/@supabase/supabase-js/dist/module/index.js
+./src/lib/supabase-admin.ts
+./src/lib/supabase-auth.ts
+./src/app/api/auth/send-otp/route.ts
+ ⚠ ./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+Critical dependency: the request of a dependency is an expression
+
+Import trace for requested module:
+./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+./node_modules/@supabase/realtime-js/dist/module/index.js
+./node_modules/@supabase/supabase-js/dist/module/index.js
+./src/lib/supabase-admin.ts
+./src/lib/supabase-auth.ts
+./src/app/api/auth/send-otp/route.ts
+ GET / 200 in 224ms
+ GET / 200 in 223ms
+ POST /api/auth/verify-otp 200 in 2582ms
+ ⚠ ./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+Critical dependency: the request of a dependency is an expression
+
+Import trace for requested module:
+./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+./node_modules/@supabase/realtime-js/dist/module/index.js
+./node_modules/@supabase/supabase-js/dist/module/index.js
+./src/lib/supabase-admin.ts
+./src/lib/supabase-auth.ts
+./src/app/api/auth/send-otp/route.ts
+ ⚠ ./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+Critical dependency: the request of a dependency is an expression
+
+Import trace for requested module:
+./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+./node_modules/@supabase/realtime-js/dist/module/index.js
+./node_modules/@supabase/supabase-js/dist/module/index.js
+./src/lib/supabase-admin.ts
+./src/lib/supabase-auth.ts
+./src/app/api/auth/verify-otp/route.ts
+ GET / 200 in 204ms
+ GET / 200 in 201ms
+ POST /api/auth/signup 400 in 1892ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ ✓ Compiled /api/auth/signup in 3.3s (2388 modules)
+ GET / 200 in 2230ms
+ GET / 200 in 2908ms
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 1114ms (2392 modules)
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 1127ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 1473ms
+ ✓ Compiled in 2.6s (2406 modules)
+ ✓ Compiled in 535ms (1214 modules)
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ GET / 200 in 633ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 214ms
+ ✓ Compiled in 1443ms (2406 modules)
+ GET / 200 in 71ms
+ ✓ Compiled in 803ms (2406 modules)
+ GET / 200 in 63ms
+ GET / 200 in 255ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 38ms
+ ○ Compiling /api/auth/signin ...
+ ⚠ ./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+Critical dependency: the request of a dependency is an expression
+
+Import trace for requested module:
+./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+./node_modules/@supabase/realtime-js/dist/module/index.js
+./node_modules/@supabase/supabase-js/dist/module/index.js
+./src/lib/supabase-admin.ts
+./src/lib/supabase-auth.ts
+./src/app/api/auth/signin/route.ts
+🔐 Attempting phone auth with: { phone: '+639171841002' }
+ GET / 200 in 1810ms
+ GET / 200 in 1815ms
+ POST /api/auth/signin 404 in 4233ms
+ ✓ Compiled /api/auth/signin in 2.8s (1191 modules)
+ GET / 200 in 638ms
+ GET / 200 in 649ms
+ ✓ Compiled in 3.6s (2402 modules)
+ ✓ Compiled in 696ms (1211 modules)
+ ✓ Compiled in 571ms (1211 modules)
+ ○ Compiling /api/health ...
+ ⚠ ./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+Critical dependency: the request of a dependency is an expression
+
+Import trace for requested module:
+./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+./node_modules/@supabase/realtime-js/dist/module/index.js
+./node_modules/@supabase/supabase-js/dist/module/index.js
+./src/lib/supabase-admin.ts
+./src/app/api/health/route.ts
+ GET /api/health 200 in 3647ms
+ ⚠ ./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+Critical dependency: the request of a dependency is an expression
+
+Import trace for requested module:
+./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+./node_modules/@supabase/realtime-js/dist/module/index.js
+./node_modules/@supabase/supabase-js/dist/module/index.js
+./src/lib/supabase-admin.ts
+./src/app/api/health/route.ts
+ ⚠ ./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+Critical dependency: the request of a dependency is an expression
+
+Import trace for requested module:
+./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+./node_modules/@supabase/realtime-js/dist/module/index.js
+./node_modules/@supabase/supabase-js/dist/module/index.js
+./src/lib/supabase-admin.ts
+./src/app/api/auth/send-otp/route.ts
+ GET /api/auth/send-otp 405 in 1770ms
+ GET / 200 in 465ms
+ ⚠ ./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+Critical dependency: the request of a dependency is an expression
+
+Import trace for requested module:
+./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+./node_modules/@supabase/realtime-js/dist/module/index.js
+./node_modules/@supabase/supabase-js/dist/module/index.js
+./src/lib/supabase-admin.ts
+./src/app/api/auth/send-otp/route.ts
+ ⚠ ./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+Critical dependency: the request of a dependency is an expression
+
+Import trace for requested module:
+./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+./node_modules/@supabase/realtime-js/dist/module/index.js
+./node_modules/@supabase/supabase-js/dist/module/index.js
+./node_modules/@supabase/ssr/dist/module/createBrowserClient.js
+./node_modules/@supabase/ssr/dist/module/index.js
+./src/lib/supabase-server.ts
+./src/app/api/auth/signin/route.ts
+🔐 Attempting phone auth with: { phone: '+639171841002' }
+ GET / 200 in 260ms
+ POST /api/auth/signin 404 in 2303ms
+ GET / 200 in 340ms
+ ✓ Compiled /api/auth/signin in 2.8s (2402 modules)
+ ✓ Compiled in 586ms (1211 modules)
+ ✓ Compiled in 1007ms (1211 modules)
+ ✓ Compiled in 1483ms (1211 modules)
+ ✓ Compiled in 698ms (1211 modules)
+ ✓ Compiled in 1358ms (2388 modules)
+   Reload env: .env
+ ✓ Compiled in 504ms (2388 modules)
+   Reload env: .env
+ ✓ Compiled in 395ms (2388 modules)
+   Reload env: .env
+ ✓ Compiled in 459ms (2388 modules)
+   Reload env: .env
+ ✓ Compiled in 1415ms (2388 modules)
+   Reload env: .env
+ ✓ Compiled in 442ms (2388 modules)
+   Reload env: .env
+ ✓ Compiled in 192ms (2388 modules)
+   Reload env: .env
+ ✓ Compiled in 330ms (2388 modules)
+   Reload env: .env
+ ✓ Compiled in 296ms (2388 modules)
+   Reload env: .env
+ ✓ Compiled in 260ms (2388 modules)
+ ✓ Compiled in 846ms (2388 modules)
+ ✓ Compiled in 1173ms (1211 modules)
+ GET / 200 in 877ms
+ GET / 200 in 33ms
+ GET / 200 in 54ms
+ GET / 200 in 79ms
+ GET / 200 in 53ms
+ GET / 200 in 35ms
+ GET / 200 in 18ms
+ GET / 200 in 24ms
+ GET / 200 in 30ms
+ GET / 200 in 34ms
+ GET / 200 in 21ms
+ GET / 200 in 27ms
+ GET / 200 in 30ms
+ GET / 200 in 12ms
+ GET / 200 in 15ms
+ GET / 200 in 12ms
+ GET / 200 in 13ms
+ GET / 200 in 31ms
+ GET / 200 in 47ms
+ GET / 200 in 16ms
+ GET / 200 in 20ms
+ GET / 200 in 25ms
+ GET / 200 in 11ms
+ GET / 200 in 44ms
+ ✓ Compiled in 4.2s (2402 modules)
+ GET / 200 in 154ms
+ ✓ Compiled in 3.4s (2402 modules)
+ GET / 200 in 893ms
+ ✓ Compiled in 2.5s (2402 modules)
+ GET / 200 in 120ms
+ ✓ Compiled in 2s (2402 modules)
+ GET / 200 in 153ms
+ ✓ Compiled in 1561ms (2402 modules)
+ GET / 200 in 57ms
+ ○ Compiling /api/admin/promote ...
+ ⚠ ./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+Critical dependency: the request of a dependency is an expression
+
+Import trace for requested module:
+./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+./node_modules/@supabase/realtime-js/dist/module/index.js
+./node_modules/@supabase/supabase-js/dist/module/index.js
+./src/lib/supabase-admin.ts
+./src/app/api/admin/promote/route.ts
+ POST /api/admin/promote 401 in 3148ms
+ GET / 200 in 320ms
+ ⚠ ./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+Critical dependency: the request of a dependency is an expression
+
+Import trace for requested module:
+./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+./node_modules/@supabase/realtime-js/dist/module/index.js
+./node_modules/@supabase/supabase-js/dist/module/index.js
+./src/lib/supabase-admin.ts
+./src/app/api/admin/promote/route.ts
+ ✓ Compiled /_not-found in 1364ms (2392 modules)
+ GET /privacy 404 in 1998ms
+ GET /terms 404 in 47ms
+ GET /terms 404 in 187ms
+ GET / 200 in 544ms
+ GET /privacy 404 in 40ms
+ GET /privacy 404 in 50ms
+ GET / 200 in 92ms
+ ✓ Compiled in 2.3s (2406 modules)
+ GET / 200 in 64ms
+ ✓ Compiled in 951ms (2402 modules)
+ GET / 200 in 116ms
+ ✓ Compiled in 860ms (2402 modules)
+ GET / 200 in 50ms
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 653ms (2392 modules)
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 803ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 236ms
+ GET /privacy 404 in 62ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 126ms
+ GET / 200 in 161ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 34ms
+ ○ Compiling /api/health ...
+ ⚠ ./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+Critical dependency: the request of a dependency is an expression
+
+Import trace for requested module:
+./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+./node_modules/@supabase/realtime-js/dist/module/index.js
+./node_modules/@supabase/supabase-js/dist/module/index.js
+./src/lib/supabase-admin.ts
+./src/app/api/health/route.ts
+ GET /api/health 200 in 6662ms
+ ✓ Compiled /api/health in 2.3s (2402 modules)
+ GET / 200 in 838ms
+ ✓ Compiled in 875ms (2402 modules)
+ GET / 200 in 67ms
+ ✓ Compiled in 774ms (2402 modules)
+ GET / 200 in 30ms
+ GET / 200 in 518ms
+ GET / 200 in 67ms
+ GET / 200 in 103ms
+ GET / 200 in 54ms
+ ✓ Compiled in 2.3s (2402 modules)
+ GET / 200 in 44ms
+ ✓ Compiled in 820ms (2402 modules)
+ GET / 200 in 151ms
+ ✓ Compiled in 1146ms (2402 modules)
+ GET / 200 in 84ms
+ GET / 200 in 278ms
+ GET / 200 in 94ms

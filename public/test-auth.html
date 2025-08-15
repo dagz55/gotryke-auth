@@ -1,0 +1,32 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GoTryke - Emergency Auth Test</title>
+</head>
+<body>
+    <h1>Emergency Auth Test</h1>
+    <p>Testing immediate redirect after sign-in...</p>
+    
+    <script>
+    // Test the sign-in flow
+    fetch('/api/auth/signin', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ phone: '+1234567890', pin: '1234' })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            document.body.innerHTML += '<p>✅ Sign-in successful - redirecting...</p>';
+            setTimeout(() => {
+                window.location.href = '/dashboard';
+            }, 1000);
+        } else {
+            document.body.innerHTML += '<p>❌ Sign-in failed: ' + data.error + '</p>';
+        }
+    });
+    </script>
+</body>
+</html>
+    

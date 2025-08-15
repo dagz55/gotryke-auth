@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Auth Flow Test</title>
+    <script>
+        let testResults = [];
+        
+        async function testAuthFlow() {
+            console.log('Starting auth flow test...');
+            
+            // Test 1: Sign in with valid credentials
+            try {
+                const response = await fetch('/api/auth/signin', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ phone: '+15551234567', pin: '1234' })
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    testResults.push('✅ Sign-in API: Success');
+                    
+                    // Test 2: Simulate routing logic
+                    console.log('✅ Sign-in successful - testing navigation...');
+                    
+                    // Check if window.location.href would work
+                    const originalLocation = window.location.href;
+                    console.log('Current location:', originalLocation);
+                    
+                    // Simulate the routing fix
+                    setTimeout(() => {
+                        console.log('🔄 Simulating: window.location.href = "/dashboard"');
+                        testResults.push('✅ Navigation: Would redirect to /dashboard');
+                        
+                        // Report results
+                        document.getElementById('results').innerHTML = testResults.join('<br>');
+                    }, 100);
+                    
+                } else {
+                    testResults.push('❌ Sign-in API: ' + result.error);
+                    document.getElementById('results').innerHTML = testResults.join('<br>');
+                }
+                
+            } catch (error) {
+                testResults.push('❌ Test error: ' + error.message);
+                document.getElementById('results').innerHTML = testResults.join('<br>');
+            }
+        }
+        
+        // Run test when page loads
+        window.onload = testAuthFlow;
+    </script>
+</head>
+<body>
+    <h1>Authentication Flow Test</h1>
+    <div id="results">Running tests...</div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+=== Git Sync Script Log ===
+Started at: Mon Aug 11 02:12:33 UTC 2025
+Working directory: /workspaces/gotryke
+
+[2025-08-11 02:12:33] Git repository detected
+[2025-08-11 02:12:33] Repository status: Staged: 0, Unstaged: 17, Untracked: 4
+[2025-08-11 02:12:33] Current branch: main
+  M .vscode/settings.json
+  M ARCHITECTURE.md
+  M CLAUDE.md
+  M README.md
+  M package-lock.json
+  M package.json
+  M src/app/(app)/project-plan/page.tsx
+  M src/app/api/auth/signin/route.ts
+  M src/app/forgot-pin/page.tsx
+  M src/components/auth/auth-form.tsx
+  M src/components/auth/pin-input.tsx
+  M src/components/auth/signup-form.tsx
+  M src/components/theme-provider.tsx
+  M src/components/ui/calendar.tsx
+  M src/components/ui/resizable.tsx
+  M src/lib/firestore.ts
+  M src/lib/supabase-auth.ts
+  ?? git-sync-20250811-015122.log
+  ?? git-sync-20250811-021233.log
+  ?? scripts/README.md
+  ?? scripts/git-sync.sh
+[2025-08-11 02:12:39] All changes staged successfully
+[2025-08-11 02:12:57] Commit message prepared: hard-fix...
+[main 7b6e9ca] hard-fix
+ Author: Robert <69344892+dagz55@users.noreply.github.com>
+ 21 files changed, 29421 insertions(+), 5109 deletions(-)
+ create mode 100644 git-sync-20250811-015122.log
+ create mode 100644 git-sync-20250811-021233.log
+ create mode 100644 scripts/README.md
+ create mode 100755 scripts/git-sync.sh
+[2025-08-11 02:12:58] Commit created successfully: 7b6e9ca
+To https://github.com/dagz55/gotryke
+   eaa8bcf..7b6e9ca  main -> main
+[2025-08-11 02:13:02] Push completed successfully
+ M git-sync-20250811-021233.log
+
+=== SYNC SUMMARY ===
+Status: SUCCESS
+Duration: 29s
+Log file: git-sync-20250811-021233.log
+Files changed: .vscode/settings.json,ARCHITECTURE.md,CLAUDE.md,README.md,git-sync-20250811-015122.log,git-sync-20250811-021233.log,package-lock.json,package.json,scripts/README.md,scripts/git-sync.sh,src/app/(app)/project-plan/page.tsx,src/app/api/auth/signin/route.ts,src/app/forgot-pin/page.tsx,src/components/auth/auth-form.tsx,src/components/auth/pin-input.tsx,src/components/auth/signup-form.tsx,src/components/theme-provider.tsx,src/components/ui/calendar.tsx,src/components/ui/resizable.tsx,src/lib/firestore.ts,src/lib/supabase-auth.ts
+Commit hash: 7b6e9ca
+Target branch: main
+Completed at: Mon Aug 11 02:13:02 UTC 2025
+===================
