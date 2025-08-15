@@ -1,5 +1,4 @@
-
-'use client'
+'use client';
 
 import { createSupabaseBrowserClient, type Profile } from '@/lib/supabase-client'
 import { Session, User } from '@supabase/supabase-js'
