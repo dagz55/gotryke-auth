@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect } from 'react'
+import { getDashboardRoute } from '@/lib/role-routes'
 
 export default function AuthRedirector() {
   useEffect(() => {
@@ -22,9 +23,19 @@ export default function AuthRedirector() {
             const clone = response.clone()
             clone.json().then((data) => {
               if (data?.success) {
+                // Extract role from the response data
+                const role = 
+                  data?.profile?.role || 
+                  data?.user?.user_metadata?.role || 
+                  data?.user?.app_metadata?.role || 
+                  null
+                
+                // Use role-based routing to determine the correct dashboard
+                const route = getDashboardRoute(role) // admin -> /admin, dispatcher -> /dispatcher, etc.
+                
                 // Force immediate navigation; don't wait for listeners
                 setTimeout(() => {
-                  window.location.href = '/dashboard'
+                  window.location.href = route
                 }, 150)
               }
             }).catch(() => {})

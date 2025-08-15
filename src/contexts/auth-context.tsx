@@ -68,7 +68,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
         
         // Add timeout for Supabase operations to prevent infinite loading
         const timeoutPromise = new Promise((_, reject) => {
-          setTimeout(() => reject(new Error('Supabase connection timeout')), 10000)
+          setTimeout(() => reject(new Error('Supabase connection timeout')), 90000)
         })
         
         // Get initial session with timeout
